@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Decision Tree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<style>
+    html {
+        font-family: "Noto Sans Thai", sans-serif !important;
+    }
+</style>
+
+<body>
+    <nav class="bg-green-400 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-lg font-bold text-white">Diabetes Prediction Website</h1>
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="/" class="text-white hover:underline font-semibold">ตาราง</a>
+                </li>
+                <li>
+                    <a href="/predict" class="text-white hover:underline font-semibold">คำนวณ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

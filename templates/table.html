@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %} Table {% endblock %} 
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Diabetes Dataset Table</h1>
+    <div class="mb-6">
+        <h1 class="text-xl font-semibold">รายละเอียดของตาราง</h1>
+        <ul class="list-disc pl-5 mt-2 ml-5">
+            {% for key, value in DIABETES_COLUMNS.items() %}
+            <li><span class="font-medium">{{ key }}:</span> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr class="bg-gray-100 text-gray-600">
+                    {% if diabetes_table and diabetes_table|length > 0 %}
+                    {% for column in diabetes_table[0].keys() %}
+                    <th class="py-2 px-4 border-b border-r last:border-r-0">{{ column }}</th>
+                    {% endfor %}
+                    {% else %}
+                    <th class="py-2 px-4 border-b border-r last:border-r-0">No data available</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% if diabetes_table and diabetes_table|length > 0 %}
+                {% for row in diabetes_table %}
+                <tr class="hover:bg-gray-50">
+                    {% for key, value in row.items() %}
+                    <td class="py-2 px-4 border-b border-r last:border-r-0">
+                        {% if key == 'target' %}
+                        <span class="font-semibold">{{ value }}</span>
+                        {% else %}
+                        {{ value }}
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="100%" class="py-2 px-4 border-b text-center">No data to display</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

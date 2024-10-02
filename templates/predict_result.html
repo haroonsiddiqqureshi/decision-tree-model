@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %} Diabetes Predict Result {% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Diabetes Predict Result</h1>
+    <div>
+        {% if result_predict == 'เป็นโรคเบาหวาน' %}
+        <div class="bg-red-400 shadow-md rounded-md p-6 mb-4">
+            <p class="text-white text-lg font-bold text-center">
+                คุณอยู่ในความเสี่ยงต่อโรคเบาหวาน
+            </p>
+        </div>
+        {% else %}
+        <div class="bg-blue-500 shadow-md rounded-md p-6 mb-4">
+            <p class="text-white text-lg font-bold text-center">
+                ยินดีด้วย! คุณไม่มีความเสี่ยงต่อโรคเบาหวาน
+            </p>
+        </div>
+        {% endif %}
+    </div>
+    <a href="/predict" class="hover:underline font-semibold flex justify-end mr-2">
+        กลับไปหน้าคำนวณ
+    </a>
+</div>
+{% endblock %}
